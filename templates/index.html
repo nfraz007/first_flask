@@ -1,0 +1,36 @@
+{% extends 'layouts/master.html' %}
+
+{% block body %}
+<div class="row mt-5">
+    <div class="col-sm-8">
+        <h3>Task</h3>
+        <table class="table table-striped">
+            <tr>
+                <th width="50%">Task</th>
+                <th width="30%">Created</th>
+                <th width="20%">Action</th>
+            </tr>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.created.date() }}</td>
+                    <td>
+                        <a href="update/{{ task.id }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                        <a href="delete/{{ task.id }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <h3>Add Task</h3>
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label>Task Name</label>
+                <input type="text" class="form-control" name="content" required>
+            </div>
+            <input type="submit" name="submit" value="Save" class="btn btn-primary btn-block">
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'layouts/master.html' %}
+
+{% block body %}
+<div class="row mt-5">
+    <div class="col-sm-4 offset-sm-4">
+        <h3>Update Task ({{ task.id }})</h3>
+        <form action="/update/{{ task.id }}" method="POST">
+            <div class="form-group">
+                <label>Task Name</label>
+                <input type="text" class="form-control" name="content" value="{{ task.content }}" required>
+            </div>
+            <input type="submit" name="submit" value="Update" class="btn btn-primary btn-block">
+        </form>
+    </div>
+</div>
+{% endblock %}
